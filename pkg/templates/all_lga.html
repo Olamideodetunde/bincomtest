@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+  <title>All Lga</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="" method="post" id="myform">
+          <div class="col-6">
+            <select class="form-control" name="lga" id="lga">
+              <option value="">Select Your Lga</option>
+              {%for i in list_of_lga%}
+              <option value="{{i.uniqueid}}">{{i.lga_name}}</option>
+              {%endfor%}
+            </select>
+          </div>
+          <div class="col-4 mb-3">
+            <button class="btn btn-primary" type="button" id="btn">Check results</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <table class="table table-striped" id="records">
+      <tr>
+        <th>S/N</th>
+        <th>Party</th>
+        <th>Score</th>
+        <th>Lga</th>
+      </tr>
+    </table>
+  </div>
+  <script src="../static/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#btn').click(function(){
+        var data=$('#myform').serialize()
+        $.ajax({
+          url:"{{url_for('all_lga')}}",
+          data:data,
+          type:'post',
+          dataType:'text',
+          success:function(response){
+            $('#records').append(response)
+          },
+          error:function(error){
+              console.log(error)
+          }
+      })
+      })
+    })
+  </script>
+</body>
+</html>

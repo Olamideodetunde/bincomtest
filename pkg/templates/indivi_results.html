@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{unit.polling_unit_name}} Results</title>
+</head>
+<body>
+  {%if inresults%}
+  {%for i in inresults%}
+    {{i.party_abbreviation}}:{{i.party_score}}<br>
+  {%endfor%}
+  {%else%}
+    <h1>No result found</h1>
+  {%endif%}
+</body>
+</html>
