@@ -9,29 +9,55 @@
 </head>
 <body>
   <div>
-    <ul>
-      {% for i in list_of_party%}
-        <li>{{i.partyname}}
-          <ul>
-            <li>
-              {{i.partyid}}
-            </li>
-          </ul>
-        </li>
-      {%endfor%}
-    </ul>
-    <ul>
-      {% for k in results%}
-        <li>{{k.party_score}}
-          <ul>
-            <li>
-              {{k.party_abbreviation}}
-            </li>
-          </ul>
-        </li>
-      {%endfor%}
-    </ul>
-    
+    <div>
+      <div>
+        <nav class="navbar navbar-expand-lg bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('all_results')}}">All Polling Unit Results</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('all_lga')}}">All Local Government Results</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
   </div>
+  <div class="container-fluid p-5">
+    <div class="row p-3 mb-3" style="justify-content: space-around;">
+      <div class="col-md-12 bg-white p-3 rounded" style="box-shadow: 2px 2px 5px;">
+        <a href="{{url_for('home')}}" class="text-center" style=" text-decoration:none; ">
+          <h2 style="font-family: Unna,Serif;">Home</h2>
+        </a>
+      </div>
+    </div>
+    <div class="row p-3 mb-3" style="justify-content: space-around;">
+      <div class="col-md-12 bg-white p-3 mb-3 rounded" style="box-shadow: 2px 2px 5px;">
+        <a href="{{url_for('all_lga')}}" class="text-center" style=" text-decoration:none; ">
+          <p><i class="fa fa-question fa-5x" style="color:black;"></i></p>
+          <h2 style="font-family: Unna,Serif;">All Local Government Results</h2>
+        </a>
+      </div>
+      <div class="col-md-12 bg-white p-3 rounded" style="box-shadow: 2px 2px 5px;">
+        <a href="{{url_for('all_results')}}" class="text-center" style=" text-decoration:none; ">
+          <p><i class="fa fa-list fa-5x" style="color:black;" aria-hidden="true"></i></p>
+          <h2 style="font-family: Unna,Serif;">All Polling Units Result</h2>
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="../static/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
